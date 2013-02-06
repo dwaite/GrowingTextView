@@ -122,8 +122,8 @@
     // get keyboard size and loctaion
 	CGRect keyboardBounds;
     [[note.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardBounds];
-    NSNumber *duration = [note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-    NSNumber *curve = [note.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+    NSNumber *duration = (note.userInfo)[UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber *curve = (note.userInfo)[UIKeyboardAnimationCurveUserInfoKey];
     
     // Need to translate the bounds to account for rotation.
     keyboardBounds = [self.view convertRect:keyboardBounds toView:nil];
@@ -145,8 +145,8 @@
 }
 
 -(void) keyboardWillHide:(NSNotification *)note{
-    NSNumber *duration = [note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-    NSNumber *curve = [note.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+    NSNumber *duration = (note.userInfo)[UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber *curve = (note.userInfo)[UIKeyboardAnimationCurveUserInfoKey];
 	
 	// get a rect for the textView frame
 	CGRect containerFrame = containerView.frame;
