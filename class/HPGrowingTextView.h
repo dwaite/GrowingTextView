@@ -52,14 +52,15 @@
 @interface HPGrowingTextView : UIView <UITextViewDelegate> {
 	HPTextViewInternal *internalTextView;	
 	
-	int minHeight;
-	int maxHeight;
+	CGFloat minHeight;
+	CGFloat maxHeight;
 	
 	//class properties
 	int maxNumberOfLines;
 	int minNumberOfLines;
 	
 	BOOL animateHeightChange;
+    NSTimeInterval animationDuration;
 	
 	//uitextview properties
 	NSObject <HPGrowingTextViewDelegate> *__unsafe_unretained delegate;
@@ -76,6 +77,10 @@
 @property int maxNumberOfLines;
 @property int minNumberOfLines;
 @property BOOL animateHeightChange;
+@property NSTimeInterval animationDuration;
+@property (readonly) BOOL isAnimating;
+@property (nonatomic, strong) NSString *placeholder;
+@property (nonatomic, strong) UIColor *placeholderColor;
 @property (nonatomic, strong) UITextView *internalTextView;	
 
 
@@ -100,6 +105,7 @@
 
 - (BOOL)hasText;
 - (void)scrollRangeToVisible:(NSRange)range;
+- (void)resetSize;
 
 // call to force a height change (e.g. after you change max/min lines)
 - (void)refreshHeight;
